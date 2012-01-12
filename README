@@ -1,0 +1,11 @@
+I posted the following to stackoverflow: 
+
+I come from a subversion background and recently my company made the switch to git. I used to have a cron entry, on my laptop, to update the multitude of checkouts, on a nightly basis. This way, I would be running against current versions of the different components of our system; especially the parts that I wasn't actively developing, but had dependencies on. I would like to achieve the same thing with git.
+
+- http://stackoverflow.com/questions/8482594/what-should-my-automated-git-update-process-look-like
+
+TODO:
+* pop may fail to merge; add error handling code
+* submodule updating is probably not right
+* reset head has caused issues b/c of dirty submodules, but on investigation the submodule has no changes--the revision of the submodule was different
+
