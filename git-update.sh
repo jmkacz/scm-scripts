@@ -1,12 +1,9 @@
 #!/bin/bash
 
 #
-# Git wrapper for tracking cloned repositories and implementing
-# "pull-all" to update all cloned repositories from their origins.
-#
-# Add the following to your bashrc to enable:
-# alias git=/PATH/TO/git-wrapper.sh
-# Todo: parse out options to clone to avoid completely messing up
+# Git wrapper for easy project updating. Initially
+# created to perform automated nightly updates,
+# but can be run manually.
 
 set -e
 set -o pipefail
