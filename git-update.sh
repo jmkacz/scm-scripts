@@ -9,6 +9,7 @@
 # Todo: parse out options to clone to avoid completely messing up
 
 set -e
+set -o pipefail
 
 GIT_HOOKS_DIR=~/.git_hooks
 
@@ -48,13 +49,8 @@ if [ -e .git/CHERRY_PICK_HEAD ]; then
 	exit 1
 fi
 
-# Determine what branch the project is on, if any.
-ref=$(git branch | grep '^*' | sed 's/^* //')
-
-if [[ $ref = "(no branch)" ]]; then
-	# The directory is in a headless state.
-	ref=$(git rev-parse HEAD)
-fi
+# Determine what branch the project is on, or the revision, if it is in a headless state.
+ref=$( (git symbolic-ref -q HEAD | sed -e 's/refs\/heads\///') || git rev-parse HEAD )
 
 # If there are any uncommitted changes, stash them.
 stashed=false
